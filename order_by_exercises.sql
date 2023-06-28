@@ -29,17 +29,17 @@ WHERE first_name IN ('Irena' , 'Vidya' , 'Maya')
 ORDER BY last_name ASC, first_name ASC;
 
 #Write a query to to find all employees whose last name starts and ends with 'E'. Sort the results by their employee number. Enter a comment with the number of employees returned, the first employee number and their first and last name, and the last employee number with their first and last name. 
-#1000 rows returned, Ramzy Erde, Parto Egerstedt
+#1000 rows returned, Ramzy Erde, Terdahiro Erde
 SELECT *
 FROM employees
-WHERE last_name LIKE "E%"
+WHERE last_name LIKE "e%e"
 ORDER BY emp_no ASC;
 
 #Write a query to to find all employees whose last name starts and ends with 'E'. Sort the results by their hire date, so that the newest employees are listed first. Enter a comment with the number of employees returned, the name of the newest employee, and the name of the oldest employee.
 #
 SELECT *
 FROM employees
-WHERE last_name LIKE "%E%"
+WHERE last_name LIKE "e%e"
 ORDER BY hire_date DESC;
 #Find all employees hired in the 90s and born on Christmas. Sort the results so that the oldest employee who was hired last is the first result. Enter a comment with the number of employees returned, the name of the oldest employee who was hired last, and the name of the youngest employee who was hired first.
 #362 , Khyun Bermini, Douadi Pettis
