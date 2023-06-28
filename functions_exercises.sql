@@ -41,4 +41,5 @@ SELECT
 		SUBSTR(birth_date,3,2)
         )
     AS username,first_name, last_name, birth_date 
-FROM employees;
+FROM employees
+LIMIT 10;
