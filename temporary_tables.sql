@@ -90,16 +90,11 @@ SELECT * FROM salary_all;
 
 DROP TABLE somerville_2277.salary_all;
 
-#table with All current employees joined with 
-SELECT employees.emp_no, employees.first_name, employees.last_name, dept_emp.dept_no
-FROM employees.employees
-JOIN dept_emp ON employees.emp_no = dept_emp.emp_no
-WHERE dept_emp.to_date > CURDATE();
+ALTER TABLE somerville_2277.salary_department ADD all_avg_salary FLOAT(10, 2);
+ALTER TABLE somerville_2277.salary_department ADD all_stddev_salary FLOAT(10, 2);
+ALTER TABLE somerville_2277.salary_department ADD department_zscore FLOAT(10, 2);
 
-
-
-CREATE TEMPORARY TABLE somerville_2277.zscore_salaries AS
-(SELECT AVG(salary) AS average_salary, STD(salary) AS std_salary
-FROM employees.salaries
-WHERE to_date > now()
-);
+UPDATE somerville_2277.salary_department SET all_avg_salary = (SELECT all_avg_salary FROM somerville_2277.salary_all);
+UPDATE somerville_2277.salary_department SET all_stddev_salary = (SELECT all_stddev_salary FROM somerville_2277.salary_all);
+ -- calculate  score for each department
+UPDATE somerville_2277.salary_department SET department_zscore = (department_avg_salary - all_avg_salary)/all_stddev_salary;
